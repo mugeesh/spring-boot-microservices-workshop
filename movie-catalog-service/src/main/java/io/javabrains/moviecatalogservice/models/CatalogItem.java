@@ -2,29 +2,29 @@ package io.javabrains.moviecatalogservice.models;
 
 public class CatalogItem {
     private String name;
-    private String desc;
     private int rating;
+    private String original_language;
 
-    public CatalogItem(String name, String desc, int rating) {
+    public CatalogItem(String name, String original_language, int rating) {
         this.name = name;
-        this.desc = desc;
+        this.original_language = original_language;
         this.rating = rating;
     }
 
-    public String getName() {
+    public String getOriginal_language() {
+		return original_language;
+	}
+
+	public void setOriginal_language(String original_language) {
+		this.original_language = original_language;
+	}
+
+	public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
     }
 
     public int getRating() {

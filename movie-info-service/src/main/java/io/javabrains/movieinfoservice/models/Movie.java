@@ -3,15 +3,39 @@ package io.javabrains.movieinfoservice.models;
 public class Movie {
     private String movieId;
     private String name;
-    private String description;
+    private String original_language;
+    private long budget;
+    
 
-    public Movie(String movieId, String name, String description) {
+    public Movie(String movieId, String name, String original_language, long budget ) {
         this.movieId = movieId;
         this.name = name;
-        this.description = description;
+        this.original_language = original_language;
+        this.budget=budget;
     }
 
-    public String getMovieId() {
+    
+    public String getOriginal_language() {
+		return original_language;
+	}
+
+
+	public void setOriginal_language(String original_language) {
+		this.original_language = original_language;
+	}
+
+
+	public long getBudget() {
+		return budget;
+	}
+
+
+	public void setBudget(long budget) {
+		this.budget = budget;
+	}
+
+
+	public String getMovieId() {
         return movieId;
     }
 
@@ -27,11 +51,4 @@ public class Movie {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

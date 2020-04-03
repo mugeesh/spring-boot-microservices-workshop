@@ -24,7 +24,9 @@ public class MovieResource {
     	String URLs="https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey;
     	System.out.println(URLs);
         MovieSummary movieSummary = restTemplate.getForObject(URLs, MovieSummary.class);
-        return new Movie(movieId, movieSummary.getTitle(), movieSummary.getOverview());
+        
+        System.out.print(movieSummary);  
+        return new Movie(movieId, movieSummary.getTitle(), movieSummary.getOriginal_language(),movieSummary.getBudget());
 
     }
     //597
