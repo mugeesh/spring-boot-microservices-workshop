@@ -1,4 +1,4 @@
-package io.javabrains.movieinfoservice;
+package com.movieinfoservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

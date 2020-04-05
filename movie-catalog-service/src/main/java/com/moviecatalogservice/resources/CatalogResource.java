@@ -1,6 +1,7 @@
 package com.moviecatalogservice.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +47,21 @@ public class CatalogResource {
         return Arrays.asList(new CatalogItem("No Moview", "", 0));
     	
     }
+    
+    //test method only
+	@GetMapping("/fault-tolerance-example")
+	// configuring a fallback method
+	@HystrixCommand(fallbackMethod = "fallbackRetrieveConfigurations")
+	public CatalogItem retrieveConfigurations() {
+		//throw new RuntimeException("Not Available");
+		return new CatalogItem("No Moview--33", "", 0);
+	}
+
+	// defining the fallback method
+	public CatalogItem fallbackRetrieveConfigurations() {
+		// returning the default configuration
+		return new CatalogItem("No Moview22", "", 0);
+	}
 }
 
 /*
