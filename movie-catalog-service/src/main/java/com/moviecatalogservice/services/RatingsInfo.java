@@ -17,11 +17,12 @@ public class RatingsInfo {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@HystrixCommand(fallbackMethod = "getFallbackRatings", commandProperties = {
-			@HystrixProperty(name = "execution.isolation.thread.timeoutInMiliseconds", value = "2000"),
-			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"), // lower limit of total  number of requests
-			@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"), // Lower error percentage
-			@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000") // Sleep time window
+	@HystrixCommand(fallbackMethod = "getFallbackRatings",
+			commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
+                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"), // lower limit of total  number of requests
+                    @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"), // Lower error percentage
+                    @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000") // Sleep time window
 	})
 	public UserRating getRatings(String userId) {
 		return restTemplate.getForObject("http://ratings-data-service/ratingsdata/user/" + userId, UserRating.class);
@@ -34,4 +35,8 @@ public class RatingsInfo {
 		return userRating;
 	}
 
+	
+	
+	//more param for hystrixproperty
+	//https://stackoverflow.com/questions/41227162/spring-boot-hystrix-integration
 }
