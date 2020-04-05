@@ -1,4 +1,4 @@
-package io.javabrains.movieinfoservice.models;
+package com.movieinfoservice.models;
 
 public class MovieSummary {
 

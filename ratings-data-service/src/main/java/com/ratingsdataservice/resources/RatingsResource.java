@@ -1,10 +1,11 @@
-package io.javabrains.ratingsdataservice.resources;
+package com.ratingsdataservice.resources;
 
-import io.javabrains.ratingsdataservice.model.Rating;
-import io.javabrains.ratingsdataservice.model.UserRating;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ratingsdataservice.model.Rating;
+import com.ratingsdataservice.model.UserRating;
 
 @RestController
 @RequestMapping("/ratingsdata")

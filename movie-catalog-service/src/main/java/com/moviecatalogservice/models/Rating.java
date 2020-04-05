@@ -1,4 +1,4 @@
-package io.javabrains.moviecatalogservice.models;
+package com.moviecatalogservice.models;
 
 public class Rating {
 

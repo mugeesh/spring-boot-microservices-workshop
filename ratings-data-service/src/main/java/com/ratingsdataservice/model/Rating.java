@@ -1,4 +1,4 @@
-package io.javabrains.ratingsdataservice.model;
+package com.ratingsdataservice.model;
 
 public class Rating {
 
