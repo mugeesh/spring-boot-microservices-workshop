@@ -22,13 +22,20 @@ public class RatingsInfo {
                     @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
                     @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"), // lower limit of total  number of requests
                     @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"), // Lower error percentage
-                    @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000") // Sleep time window
-	})
+	                    @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000") // Sleep time window
+		},
+            threadPoolKey ="ratingsInfo",
+			threadPoolProperties = {
+					@HystrixProperty(name = "coreSize", value = "20"),
+					@HystrixProperty(name = "maxQueueSize", value = "10") 
+					})
 	public UserRating getRatings(String userId) {
 		return restTemplate.getForObject("http://ratings-data-service/ratingsdata/user/" + userId, UserRating.class);
 	}
 
 	public UserRating getFallbackRatings(String userId) {
+		
+		// log implements
 		UserRating userRating = new UserRating();
 		userRating.setUserId(userId);
 		userRating.setRatings(Arrays.asList(new Rating("0", 0)));
